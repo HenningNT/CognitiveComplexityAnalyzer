@@ -33,9 +33,10 @@ namespace HenningNT.Analyzer
         private static int AnalyzeIfStatement(IfStatementSyntax ifStatement, int nesting)
         {
             int score = 1;
-            var nested = ifStatement.Statement.DescendantNodesAndSelf().OfType<IfStatementSyntax>();
+
+            var nested = ifStatement.Statement.DescendantNodesAndSelf().OfType<StatementSyntax>();
             if (ifStatement.Else != null)
-                nested = nested.Concat( ifStatement.Else.Statement.DescendantNodesAndSelf().OfType<IfStatementSyntax>());
+                nested = nested.Concat( ifStatement.Else.Statement.DescendantNodesAndSelf().OfType<StatementSyntax>());
 
             if (nested.Any())
                 score += AnalyzeStatements(new SyntaxList<StatementSyntax>(nested ) , nesting + 1);
