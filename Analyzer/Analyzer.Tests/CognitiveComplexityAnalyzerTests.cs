@@ -1,6 +1,7 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 using System.Linq;
 using Xunit;
 
@@ -19,12 +20,30 @@ namespace HenningNT.Analyzer.Tests
         [Fact]
         public void MainMethodScores1()
         {
-            var mainMethod = root.DescendantNodesAndSelf().OfType<MethodDeclarationSyntax>().First(method => method.Identifier.ValueText == "Main");
-            var unit = new CognitiveComplexityAnalyzer();
+            var method = root.DescendantNodesAndSelf().OfType<MethodDeclarationSyntax>().First(method => method.Identifier.ValueText == "SimpleIf");
 
-            var score = CognitiveComplexityAnalyzer.AnalyzeMethod(mainMethod);
+            var score = CognitiveComplexityAnalyzer.AnalyzeMethod(method);
 
             Assert.Equal(1, score);
+        }
+        class Program
+        {
+            bool a, b, c;
+            public void SimpleIf()
+            {
+                if (a)
+                    Console.WriteLine(a);
+            }
+            public void SimpleIfAnd()
+            {
+                if (a && c)
+                    Console.WriteLine(a);
+            }
+            public void SimpleIfOr()
+            {
+                if (a || b)
+                    Console.WriteLine(a);
+            }
         }
     }
 
@@ -39,9 +58,12 @@ namespace HenningNT.Analyzer.Tests
             {
                 class Program
                 {
-                    static void Main(string[] args)
+                    bool a,b,c;
+                    
+                    public void SimpleIf()
                     {
-                        Console.WriteLine(""Hello World!"");
+                        if (a)
+                            Console.WriteLine(a);
                     }
                 }
             }";
