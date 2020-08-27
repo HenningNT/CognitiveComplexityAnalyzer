@@ -1,7 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System;
 using System.Linq;
 using Xunit;
 
@@ -13,7 +12,7 @@ namespace HenningNT.Analyzer.Tests
 
         public AnalyseSwitchTests()
         {
-            SyntaxTree tree = CSharpSyntaxTree.ParseText(SwitchSnippets.Snip);
+            SyntaxTree tree = CSharpSyntaxTree.ParseText(Snip);
             root = tree.GetCompilationUnitRoot();
         }
 
@@ -36,10 +35,7 @@ namespace HenningNT.Analyzer.Tests
             Assert.Equal(2, score);
         }
 
-
-        public class SwitchSnippets
-        {
-            public const string Snip = @"
+        public const string Snip = @"
             using System; 
             using System.Collections.Generic;
             using System.Linq;
@@ -82,6 +78,5 @@ namespace HenningNT.Analyzer.Tests
                     }
                 }
             }";
-        }
     }
 }

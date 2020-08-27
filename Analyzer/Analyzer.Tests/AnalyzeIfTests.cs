@@ -1,7 +1,6 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System;
 using System.Linq;
 using Xunit;
 
@@ -13,7 +12,7 @@ namespace HenningNT.Analyzer.Tests
 
         public AnalyzeIfTests()
         {
-            SyntaxTree tree = CSharpSyntaxTree.ParseText(CodeSnippets.HelloWorldProgram);
+            SyntaxTree tree = CSharpSyntaxTree.ParseText(HelloWorldProgram);
             root = tree.GetCompilationUnitRoot();
         }
 
@@ -137,50 +136,6 @@ namespace HenningNT.Analyzer.Tests
             Assert.Equal(3, score);
         }
 
-        class Program
-        {
-            bool a, b, c, d;
-            public void SimpleIf()
-            {
-                if (a)
-                    Console.WriteLine(a);
-            }
-            public void SimpleIfAnd()
-            {
-                if (a && c || b)
-                    Console.WriteLine(a);
-            }
-            public void SimpleIfOr()
-            {
-                if (a || b && c || d)
-                    Console.WriteLine(a);
-            }
-            public void NestedIf()
-            {
-                if (a)
-                    if (b)
-                        Console.WriteLine(a);
-            }
-
-            public void NestedIfAndOr()     // Scores 5
-            {
-                if (a && c)     // +1 +1
-                    if (b || d) // +1 +1 +1
-                        Console.WriteLine(a);
-            }
-
-            public void IfElseWithIf() // Scores 3
-            {
-                if (a)      // +1
-                    Console.WriteLine(a);
-                else if (b) // +1 +1
-                    Console.WriteLine(b);
-            }
-        }
-    }
-
-    public class CodeSnippets
-    {
         public const string HelloWorldProgram = @"
             using System; 
             using System.Collections.Generic;
