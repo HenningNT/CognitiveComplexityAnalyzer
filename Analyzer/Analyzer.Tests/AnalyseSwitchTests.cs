@@ -36,25 +36,6 @@ namespace HenningNT.Analyzer.Tests
             Assert.Equal(2, score);
         }
 
-        public void SwitchWithIf()
-        {
-            bool b = false;
-            int a = 2;
-            switch (a)
-            {
-                case 1:
-                    if (b)
-                        Console.WriteLine(a);
-                    break;
-                case 2:
-                    Console.WriteLine(a);
-                    break;
-                default:
-                    break;
-            }
-        }
-
-
 
         public class SwitchSnippets
         {
