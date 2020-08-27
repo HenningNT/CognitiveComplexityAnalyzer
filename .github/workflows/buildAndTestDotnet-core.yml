@@ -23,3 +23,5 @@ jobs:
       run: dotnet build **/*.sln --configuration Release --no-restore
     - name: Test
       run: dotnet test **/*.sln --no-restore --verbosity normal
+    - name: Upload to Codecov
+      run: bash <(curl -s https://codecov.io/bash)
