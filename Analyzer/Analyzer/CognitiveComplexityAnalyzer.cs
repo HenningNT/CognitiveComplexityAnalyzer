@@ -45,6 +45,9 @@ namespace HenningNT.Analyzer
             var condition = whileSyntax.Condition.DescendantNodesAndSelf(exp => exp.GetType() == typeof(BinaryExpressionSyntax)).Where(exp => exp.GetType() != typeof(IdentifierNameSyntax)).Where(exp => exp.GetType() != typeof(LiteralExpressionSyntax)).Select(node => node.Kind().ToString()).GroupBy(name => name);
             score += condition.Count();
 
+            var nested = whileSyntax.DescendantNodes().OfType<StatementSyntax>();
+            score += AnalyzeStatements(new SyntaxList<StatementSyntax>(nested), nesting+1);
+
             return score;
         }
 

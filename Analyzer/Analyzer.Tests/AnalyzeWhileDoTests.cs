@@ -37,7 +37,15 @@ namespace HenningNT.Analyzer.Tests
             Assert.Equal(2, score);
         }
 
+        [Fact]
+        public void WhileWithConditionAndStatementsScores4()
+        {
+            var method = root.DescendantNodesAndSelf().OfType<MethodDeclarationSyntax>().First(method => method.Identifier.ValueText == "WhileWithConditionAndStatements");
 
+            var score = CognitiveComplexityAnalyzer.AnalyzeMethod(method);
+
+            Assert.Equal(5, score);
+        }
 
 
         public string snip = @"
@@ -48,6 +56,14 @@ namespace HenningNT.Analyzer.Tests
                     bool a = true;
                     bool b = true;
 
+                    public void WhileWithConditionAndStatements()
+                    {
+                        while (a == b)
+                        {
+                            if (b == true)
+                                a = !a;
+                        }
+                    }
                     public void WhileWithCondition()
                     {
                         while (a == b)
