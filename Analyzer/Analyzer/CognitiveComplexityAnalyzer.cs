@@ -1,6 +1,7 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 using System.Linq;
 
 namespace HenningNT.Analyzer
@@ -29,8 +30,21 @@ namespace HenningNT.Analyzer
                     case TryStatementSyntax trySyntax:
                         score += AnalyzeTrySyntax(trySyntax, nesting);
                         break;
+                    case WhileStatementSyntax whileSyntax:
+                        score += AnalyzeWhileSyntax(whileSyntax, nesting);
+                        break;
                 }
             }
+            return score;
+        }
+
+        private static int AnalyzeWhileSyntax(WhileStatementSyntax whileSyntax, int nesting)
+        {
+            int score = 1;
+
+            var condition = whileSyntax.Condition.DescendantNodesAndSelf(exp => exp.GetType() == typeof(BinaryExpressionSyntax)).Where(exp => exp.GetType() != typeof(IdentifierNameSyntax)).Where(exp => exp.GetType() != typeof(LiteralExpressionSyntax)).Select(node => node.Kind().ToString()).GroupBy(name => name);
+            score += condition.Count();
+
             return score;
         }
 

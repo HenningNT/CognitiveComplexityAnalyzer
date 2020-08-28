@@ -5,7 +5,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.Linq;
 using Xunit;
 
-namespace Analyzer.Tests
+namespace HenningNT.Analyzer.Tests
 {
     public class AnalyzeWhileDoTests
     {
@@ -25,13 +25,19 @@ namespace Analyzer.Tests
             var score = CognitiveComplexityAnalyzer.AnalyzeMethod(method);
 
             Assert.Equal(1, score);
-
-            bool a = true;
-            while (a)
-            {
-                a = !a;
-            }
         }
+
+        [Fact]
+        public void WhileWithConditionScores2()
+        {
+            var method = root.DescendantNodesAndSelf().OfType<MethodDeclarationSyntax>().First(method => method.Identifier.ValueText == "WhileWithCondition");
+
+            var score = CognitiveComplexityAnalyzer.AnalyzeMethod(method);
+
+            Assert.Equal(2, score);
+        }
+
+
 
 
         public string snip = @"
@@ -39,15 +45,26 @@ namespace Analyzer.Tests
             {
                 class Program
                 {
-        public void SimpleWhileDo()
-        {
-            bool a = true;
-            while (a)
-            {
-                a = !a;
+                    bool a = true;
+                    bool b = true;
+
+                    public void WhileWithCondition()
+                    {
+                        while (a == b)
+                        {
+                            a = !a;
+                        }
+                    }
+
+                    public void SimpleWhileDo()
+                    {
+                        while (a)
+                        {
+                            a = !a;
+                        }
+                    }
+                }
             }
-        }
-}}
         ";
     }
 
