@@ -33,8 +33,24 @@ namespace HenningNT.Analyzer
                     case WhileStatementSyntax whileSyntax:
                         score += AnalyzeWhileSyntax(whileSyntax, nesting);
                         break;
+                    case DoStatementSyntax whileSyntax:
+                        score += AnalyzeDoWhileSyntax(whileSyntax, nesting);
+                        break;
                 }
             }
+            return score;
+        }
+
+        private static int AnalyzeDoWhileSyntax(DoStatementSyntax whileSyntax, int nesting)
+        {
+            int score = 1;
+
+            var condition = whileSyntax.Condition.DescendantNodesAndSelf(exp => exp.GetType() == typeof(BinaryExpressionSyntax)).Where(exp => exp.GetType() != typeof(IdentifierNameSyntax)).Where(exp => exp.GetType() != typeof(LiteralExpressionSyntax)).Select(node => node.Kind().ToString()).GroupBy(name => name);
+            score += condition.Count();
+
+            var nested = whileSyntax.DescendantNodes().OfType<StatementSyntax>();
+            score += AnalyzeStatements(new SyntaxList<StatementSyntax>(nested), nesting + 1);
+
             return score;
         }
 

@@ -47,6 +47,36 @@ namespace HenningNT.Analyzer.Tests
             Assert.Equal(5, score);
         }
 
+        [Fact]
+        public void DoWhileScores1()
+        {
+            var method = root.DescendantNodesAndSelf().OfType<MethodDeclarationSyntax>().First(method => method.Identifier.ValueText == "SimpleDoWhile");
+
+            var score = CognitiveComplexityAnalyzer.AnalyzeMethod(method);
+
+            Assert.Equal(1, score);
+        }
+
+        [Fact]
+        public void DoWhileWithConditionScores2()
+        {
+            var method = root.DescendantNodesAndSelf().OfType<MethodDeclarationSyntax>().First(method => method.Identifier.ValueText == "SimpleDoWhileWithCondition");
+
+            var score = CognitiveComplexityAnalyzer.AnalyzeMethod(method);
+
+            Assert.Equal(2, score);
+        }
+
+        [Fact]
+        public void DoWhileWithConditionAndStatementScores5()
+        {
+            var method = root.DescendantNodesAndSelf().OfType<MethodDeclarationSyntax>().First(method => method.Identifier.ValueText == "DoWhileWithConditionAndStatements");
+
+            var score = CognitiveComplexityAnalyzer.AnalyzeMethod(method);
+
+            Assert.Equal(5, score);
+        }
+
 
         public string snip = @"
             namespace HelloWorld
@@ -55,6 +85,29 @@ namespace HenningNT.Analyzer.Tests
                 {
                     bool a = true;
                     bool b = true;
+
+                    public void DoWhileWithConditionAndStatements()
+                    {
+                        do
+                        {
+                            if (b == true)
+                                a = !a;
+                        }while (a == b);
+                    }
+
+                    public void SimpleDoWhileWithCondition()
+                    {
+                        do
+                        {
+                        } while (a == false);
+                    }
+
+                    public void SimpleDoWhile()
+                    {
+                        do
+                        {
+                        } while (a);
+                    }
 
                     public void WhileWithConditionAndStatements()
                     {
