@@ -1,6 +1,7 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 using System.Linq;
 using Xunit;
 
@@ -56,11 +57,30 @@ namespace HenningNT.Analyzer.Tests
             Assert.Equal(2, score);
         }
 
+        [Fact]
+        public void SimpleForLoopWithIf_Scores2()
+        {
+            var method = root.DescendantNodesAndSelf().OfType<MethodDeclarationSyntax>().First(method => method.Identifier.ValueText == "SimpleForLoopWithIf_Scores2");
+
+            var score = CognitiveComplexityAnalyzer.AnalyzeMethod(method);
+
+            Assert.Equal(4, score);
+        }
+
+
         public string snip = @"
             namespace HelloWorld
             {
                 class Program
                 {
+                    public void SimpleForLoopWithIf_Scores2()
+                    {
+                        for (int i = 0; i < 10; i++)
+                        {
+                            if (i == 2)
+                                Console.WriteLine(i);
+                        }
+                    }
                     public void ForLoopWithMethodCallForDeclaration()
                     {
                         for (int i = GetStart(); i == 10; i++)
@@ -83,6 +103,7 @@ namespace HenningNT.Analyzer.Tests
 
                         }
                     }
+
                     public void SimpleForLoop()
                     {
                         for (int i = 0; i < 10; i++)

@@ -50,7 +50,11 @@ namespace HenningNT.Analyzer
         private static int AnalyzeForEachSyntax(ForEachStatementSyntax forEachSyntax, int nesting)
         {
             int score = 1;
-            score += forEachSyntax.DescendantNodesAndSelf().Where(t => t is InvocationExpressionSyntax).Count();
+            score += forEachSyntax.Expression.DescendantNodes().Where(t => t is InvocationExpressionSyntax).Count();
+            var a = forEachSyntax.Expression.DescendantNodes();
+            var nested = forEachSyntax.DescendantNodes().OfType<StatementSyntax>();
+            score += AnalyzeStatements(new SyntaxList<StatementSyntax>(nested), nesting + 1);
+
             return score;
         }
 
@@ -68,6 +72,9 @@ namespace HenningNT.Analyzer
                 var rightNested = bes.Right.DescendantNodesAndSelf().OfType<InvocationExpressionSyntax>();
                 score += leftNested.Count() + rightNested.Count();
             }
+
+            var nested = forSyntax.DescendantNodes().OfType<StatementSyntax>();
+            score += AnalyzeStatements(new SyntaxList<StatementSyntax>(nested), nesting + 1);
 
             return score;
         }
