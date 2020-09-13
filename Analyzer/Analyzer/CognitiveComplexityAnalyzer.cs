@@ -36,8 +36,29 @@ namespace HenningNT.Analyzer
                     case DoStatementSyntax whileSyntax:
                         score += AnalyzeDoWhileSyntax(whileSyntax, nesting);
                         break;
+                    case ForStatementSyntax forSyntax:
+                        score += AnalyzeForSyntax(forSyntax, nesting);
+                        break;
                 }
             }
+            return score;
+        }
+
+        private static int AnalyzeForSyntax(ForStatementSyntax forSyntax, int nesting)
+        {
+            int score = 1;
+
+            score += forSyntax.Declaration.DescendantNodesAndSelf().Where(t => t is InvocationExpressionSyntax).Count();
+
+            score += forSyntax.Incrementors.Where(t => t is InvocationExpressionSyntax).Count();
+
+            if (forSyntax.Condition is BinaryExpressionSyntax bes)
+            {
+                var leftNested = bes.Left.DescendantNodesAndSelf().OfType<InvocationExpressionSyntax>();
+                var rightNested = bes.Right.DescendantNodesAndSelf().OfType<InvocationExpressionSyntax>();
+                score += leftNested.Count() + rightNested.Count();
+            }
+
             return score;
         }
 
