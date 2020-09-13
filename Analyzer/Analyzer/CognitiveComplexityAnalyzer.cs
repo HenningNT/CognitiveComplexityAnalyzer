@@ -1,6 +1,7 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 using System.Linq;
 
 namespace HenningNT.Analyzer
@@ -38,8 +39,18 @@ namespace HenningNT.Analyzer
                     case ForStatementSyntax forSyntax:
                         score += AnalyzeForSyntax(forSyntax, nesting);
                         break;
+                    case ForEachStatementSyntax forEachSyntax:
+                        score += AnalyzeForEachSyntax(forEachSyntax, nesting);
+                        break;
                 }
             }
+            return score;
+        }
+
+        private static int AnalyzeForEachSyntax(ForEachStatementSyntax forEachSyntax, int nesting)
+        {
+            int score = 1;
+            score += forEachSyntax.DescendantNodesAndSelf().Where(t => t is InvocationExpressionSyntax).Count();
             return score;
         }
 
