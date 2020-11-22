@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCAnalyzer.CodeFixes", "CCA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCAnalyzer.Package", "CCAnalyzer\CCAnalyzer.Package\CCAnalyzer.Package.csproj", "{75F47D59-DD56-438B-BDCD-026C3DD48DA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCAnalyzer.Test", "CCAnalyzer\CCAnalyzer.Test\CCAnalyzer.Test.csproj", "{77771F13-1FFC-4EDA-979A-CA98AF49E440}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCAnalyzer.Vsix", "CCAnalyzer\CCAnalyzer.Vsix\CCAnalyzer.Vsix.csproj", "{CDD3F8B9-B969-42D0-B345-218DBF55090D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Analyzer", "CCAnalyzer\Analyzer\Analyzer.csproj", "{BE94318A-028C-46CD-9085-355366611B9E}"
@@ -35,10 +33,6 @@ Global
 		{75F47D59-DD56-438B-BDCD-026C3DD48DA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75F47D59-DD56-438B-BDCD-026C3DD48DA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75F47D59-DD56-438B-BDCD-026C3DD48DA3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{77771F13-1FFC-4EDA-979A-CA98AF49E440}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{77771F13-1FFC-4EDA-979A-CA98AF49E440}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{77771F13-1FFC-4EDA-979A-CA98AF49E440}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{77771F13-1FFC-4EDA-979A-CA98AF49E440}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CDD3F8B9-B969-42D0-B345-218DBF55090D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CDD3F8B9-B969-42D0-B345-218DBF55090D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDD3F8B9-B969-42D0-B345-218DBF55090D}.Release|Any CPU.ActiveCfg = Release|Any CPU

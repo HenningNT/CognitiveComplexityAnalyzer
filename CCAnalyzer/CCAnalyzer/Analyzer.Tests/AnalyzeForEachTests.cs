@@ -1,10 +1,11 @@
-﻿using Microsoft.CodeAnalysis;
+﻿using HenningNT.CCAnalyzer.Analyzer;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.Linq;
 using Xunit;
 
-namespace HenningNT.Analyzer.Tests
+namespace HenningNT.CCAnalyzer.Tests
 {
     public class AnalyzeForEachTests
     {

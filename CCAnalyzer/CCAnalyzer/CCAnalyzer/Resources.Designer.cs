@@ -11,7 +11,7 @@
 using System;
 using System.Reflection;
 
-namespace CCAnalyzer
+namespace HenningNT.CCAnalyzer
 {
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.

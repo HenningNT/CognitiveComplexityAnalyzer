@@ -3,7 +3,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.Linq;
 
-namespace HenningNT.Analyzer
+namespace HenningNT.CCAnalyzer.Analyzer
 {
     public class CognitiveComplexityAnalyzer
     {

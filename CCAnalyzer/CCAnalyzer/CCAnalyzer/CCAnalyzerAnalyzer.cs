@@ -1,14 +1,11 @@
-﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
+﻿using HenningNT.CCAnalyzer.Analyzer;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
-using System;
-using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
-using System.Threading;
 
-namespace CCAnalyzer
+namespace HenningNT.CCAnalyzer
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class CCAnalyzerAnalyzer : DiagnosticAnalyzer
@@ -33,7 +30,19 @@ namespace CCAnalyzer
 
             // TODO: Consider registering other actions that act on syntax instead of or in addition to symbols
             // See https://github.com/dotnet/roslyn/blob/master/docs/analyzers/Analyzer%20Actions%20Semantics.md for more information
-            context.RegisterSymbolAction(AnalyzeSymbol, SymbolKind.NamedType);
+            context.RegisterCodeBlockAction(AnalyzCodeBlock);
+        }
+
+        private void AnalyzCodeBlock(CodeBlockAnalysisContext context)
+        {
+            if (context.CodeBlock is MethodDeclarationSyntax method)
+            {
+                var cc = CognitiveComplexityAnalyzer.AnalyzeMethod(method);
+
+                var diagnostic = Diagnostic.Create(Rule, method.GetLocation(), method.Identifier.ValueText);
+
+                context.ReportDiagnostic(diagnostic);
+            }
         }
 
         private static void AnalyzeSymbol(SymbolAnalysisContext context)
