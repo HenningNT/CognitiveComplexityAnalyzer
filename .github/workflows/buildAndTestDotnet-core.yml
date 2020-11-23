@@ -19,6 +19,8 @@ jobs:
         dotnet-version: 3.1.301
     - name: Install dependencies
       run: dotnet restore **/*.sln
+    - name: Print path
+      run: bash pwd
     - name: Build
       run: dotnet build **/CCAnalyzer.Package.csproj --configuration Release --no-restore
     - name: Test
