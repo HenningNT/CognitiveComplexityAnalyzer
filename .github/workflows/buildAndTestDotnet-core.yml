@@ -20,7 +20,7 @@ jobs:
     - name: Install dependencies
       run: dotnet restore **/*.sln
     - name: Build
-      run: dotnet build **/*.sln --configuration Release --no-restore
+      run: dotnet build CCAnalyzer\CCAnalyzer.Package\CCAnalyzer.Package.csproj --configuration Release --no-restore
     - name: Test
       run: dotnet test **/*.sln --no-restore --verbosity normal --collect:"XPlat Code Coverage"
     - name: Upload to Codecov
