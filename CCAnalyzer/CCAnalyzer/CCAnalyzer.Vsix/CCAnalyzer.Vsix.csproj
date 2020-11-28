@@ -3,7 +3,7 @@
   <Import Sdk="Microsoft.NET.Sdk" Project="Sdk.props" />
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net472</TargetFramework>
     <RootNamespace>CCAnalyzer.Vsix</RootNamespace>
     <AssemblyName>CCAnalyzer.Vsix</AssemblyName>
   </PropertyGroup>
