@@ -25,3 +25,12 @@ jobs:
       run: dotnet test **/*.sln --no-restore --verbosity normal --collect:"XPlat Code Coverage"
     - name: Upload to Codecov
       run: bash <(curl -s https://codecov.io/bash)
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2.2.1
+      with:
+        # Artifact name
+        name: # optional, default is artifact
+        # A file, directory or wildcard pattern that describes what to upload
+        path: **/*.nupkg
+      error: Fail the action with an error message
+      retention-days: 1
