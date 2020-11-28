@@ -6,7 +6,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   <PropertyGroup>
-    <PackageId>CCAnalyzer</PackageId>
+    <PackageId>HenningNT.CCAnalyzer</PackageId>
     <PackageVersion>0.0.1</PackageVersion>
     <Authors>henning.torsteinsen</Authors>
     <PackageLicenseUrl>https://github.com/HenningNT/CognitiveComplexityAnalyzer/blob/Release/LICENSE</PackageLicenseUrl>
@@ -17,6 +17,8 @@
     <PackageTags>Cognitive Complexity, analyzer, analyzers</PackageTags>
     <NoPackageAnalysis>true</NoPackageAnalysis>
     <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);_AddAnalyzersToOutput</TargetsForTfmSpecificContentInPackage>
+    <Version>0.0.1</Version>
+    <Product>CognitiveComplexityAnalyzer</Product>
   </PropertyGroup>
   <Target Name="_AddAnalyzersToOutput">
     <ItemGroup>

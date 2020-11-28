@@ -21,10 +21,9 @@ namespace HenningNT.CCAnalyzer
         private static readonly LocalizableString Description = new LocalizableResourceString(nameof(Resources.AnalyzerDescription), Resources.ResourceManager, typeof(Resources));
         private const string Category = "Naming";
 
-        private static readonly DiagnosticDescriptor WarningRule = new DiagnosticDescriptor(DiagnosticId, Title, MessageFormat, Category, DiagnosticSeverity.Warning, isEnabledByDefault: true, description: Description);
-        private static readonly DiagnosticDescriptor ErrorRule = new DiagnosticDescriptor(DiagnosticId, Title, MessageFormat, Category, DiagnosticSeverity.Error, isEnabledByDefault: true, description: Description);
+        private static readonly DiagnosticDescriptor CCRule = new DiagnosticDescriptor(DiagnosticId, Title, MessageFormat, Category, DiagnosticSeverity.Warning, isEnabledByDefault: true, description: Description);
 
-        public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get { return ImmutableArray.Create(WarningRule, ErrorRule); } }
+        public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get { return ImmutableArray.Create(CCRule); } }
 
         public override void Initialize(AnalysisContext context)
         {
@@ -43,26 +42,18 @@ namespace HenningNT.CCAnalyzer
                 try
                 {
                     var cc = CognitiveComplexityAnalyzer.AnalyzeMethod(method);
-                    Console.WriteLine($"Method {method.Identifier.ValueText} has complexity of {cc}");
+                    Debug.WriteLine($"Method {method.Identifier.ValueText} has complexity of {cc}");
                     if (cc > 10)
                     {
-                        var diagnostic = Diagnostic.Create(WarningRule, method.GetLocation(), method.Identifier.ValueText, cc);
-
-                        context.ReportDiagnostic(diagnostic);
-                    }
-
-                    if (cc > 20)
-                    {
-                        var diagnostic = Diagnostic.Create(ErrorRule, method.GetLocation(), method.Identifier.ValueText, cc);
+                        var diagnostic = Diagnostic.Create(CCRule, method.GetLocation(), method.Identifier.ValueText, cc);
 
                         context.ReportDiagnostic(diagnostic);
                     }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Exception when processing {method.Identifier.ValueText}, Message is '{ex.Message}', stack trace: {ex.StackTrace}");
+                    Debug.WriteLine($"Exception when processing {method.Identifier.ValueText}, Message is '{ex.Message}', stack trace: {ex.StackTrace}");
                 }
-                
             }
         }
 
@@ -75,7 +66,7 @@ namespace HenningNT.CCAnalyzer
             if (namedTypeSymbol.Name.ToCharArray().Any(char.IsLower))
             {
                 // For all such symbols, produce a diagnostic.
-                var diagnostic = Diagnostic.Create(WarningRule, namedTypeSymbol.Locations[0], namedTypeSymbol.Name);
+                var diagnostic = Diagnostic.Create(CCRule, namedTypeSymbol.Locations[0], namedTypeSymbol.Name);
 
                 context.ReportDiagnostic(diagnostic);
             }
