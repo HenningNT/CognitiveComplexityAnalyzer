@@ -11,6 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CCAnalyzer.Vsix", "CCAnalyz
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CCAnalyzer.Tests", "CCAnalyzer\CCAnalyzer.Tests\CCAnalyzer.Tests.csproj", "{55E4ACB6-99E0-4F4F-B64A-5A96BF33CCE6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{2EE84C32-6BF4-4C86-8837-79EB49D16BA8}"
+	ProjectSection(SolutionItems) = preProject
+		Docs\Rule reference.md = Docs\Rule reference.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

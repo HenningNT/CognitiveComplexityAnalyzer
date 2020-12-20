@@ -10,7 +10,7 @@ namespace HenningNT.CCAnalyzer
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class CCAnalyzerAnalyzer : DiagnosticAnalyzer
     {
-        public const string DiagnosticId = "CCAnalyzer";
+        public const string DiagnosticId = "CCA001";
 
         // You can change these strings in the Resources.resx file. If you do not want your analyzer to be localize-able, you can use regular strings for Title and MessageFormat.
         // See https://github.com/dotnet/roslyn/blob/master/docs/analyzers/Localizing%20Analyzers.md for more on localization
