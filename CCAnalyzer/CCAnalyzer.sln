@@ -3,17 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCAnalyzer", "CCAnalyzer\CCAnalyzer\CCAnalyzer.csproj", "{E9A0A9F9-6532-4030-81EF-C57DDC2DC4A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CCAnalyzer", "CCAnalyzer\CCAnalyzer\CCAnalyzer.csproj", "{E9A0A9F9-6532-4030-81EF-C57DDC2DC4A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCAnalyzer.CodeFixes", "CCAnalyzer\CCAnalyzer.CodeFixes\CCAnalyzer.CodeFixes.csproj", "{ABA2F96B-4EF7-441E-86B3-6E8610BAFBED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CCAnalyzer.Package", "CCAnalyzer\CCAnalyzer.Package\CCAnalyzer.Package.csproj", "{75F47D59-DD56-438B-BDCD-026C3DD48DA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCAnalyzer.Package", "CCAnalyzer\CCAnalyzer.Package\CCAnalyzer.Package.csproj", "{75F47D59-DD56-438B-BDCD-026C3DD48DA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CCAnalyzer.Vsix", "CCAnalyzer\CCAnalyzer.Vsix\CCAnalyzer.Vsix.csproj", "{CDD3F8B9-B969-42D0-B345-218DBF55090D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCAnalyzer.Vsix", "CCAnalyzer\CCAnalyzer.Vsix\CCAnalyzer.Vsix.csproj", "{CDD3F8B9-B969-42D0-B345-218DBF55090D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CCAnalyzer.Tests", "CCAnalyzer\CCAnalyzer.Tests\CCAnalyzer.Tests.csproj", "{55E4ACB6-99E0-4F4F-B64A-5A96BF33CCE6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Analyzer", "CCAnalyzer\Analyzer\Analyzer.csproj", "{BE94318A-028C-46CD-9085-355366611B9E}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Analyzer.Tests", "CCAnalyzer\Analyzer.Tests\Analyzer.Tests.csproj", "{78EA336F-683B-487D-891D-7FE7B41F6B91}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{2EE84C32-6BF4-4C86-8837-79EB49D16BA8}"
+	ProjectSection(SolutionItems) = preProject
+		Docs\Rule reference.md = Docs\Rule reference.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +26,6 @@ Global
 		{E9A0A9F9-6532-4030-81EF-C57DDC2DC4A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9A0A9F9-6532-4030-81EF-C57DDC2DC4A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9A0A9F9-6532-4030-81EF-C57DDC2DC4A2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ABA2F96B-4EF7-441E-86B3-6E8610BAFBED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ABA2F96B-4EF7-441E-86B3-6E8610BAFBED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ABA2F96B-4EF7-441E-86B3-6E8610BAFBED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ABA2F96B-4EF7-441E-86B3-6E8610BAFBED}.Release|Any CPU.Build.0 = Release|Any CPU
 		{75F47D59-DD56-438B-BDCD-026C3DD48DA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{75F47D59-DD56-438B-BDCD-026C3DD48DA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75F47D59-DD56-438B-BDCD-026C3DD48DA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -37,14 +34,10 @@ Global
 		{CDD3F8B9-B969-42D0-B345-218DBF55090D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDD3F8B9-B969-42D0-B345-218DBF55090D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDD3F8B9-B969-42D0-B345-218DBF55090D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BE94318A-028C-46CD-9085-355366611B9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BE94318A-028C-46CD-9085-355366611B9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BE94318A-028C-46CD-9085-355366611B9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BE94318A-028C-46CD-9085-355366611B9E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{78EA336F-683B-487D-891D-7FE7B41F6B91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{78EA336F-683B-487D-891D-7FE7B41F6B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{78EA336F-683B-487D-891D-7FE7B41F6B91}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{78EA336F-683B-487D-891D-7FE7B41F6B91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55E4ACB6-99E0-4F4F-B64A-5A96BF33CCE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55E4ACB6-99E0-4F4F-B64A-5A96BF33CCE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55E4ACB6-99E0-4F4F-B64A-5A96BF33CCE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55E4ACB6-99E0-4F4F-B64A-5A96BF33CCE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

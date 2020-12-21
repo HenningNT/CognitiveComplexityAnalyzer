@@ -3,7 +3,7 @@
   <Import Sdk="Microsoft.NET.Sdk" Project="Sdk.props" />
 
   <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
+    <TargetFramework>net5</TargetFramework>
     <RootNamespace>CCAnalyzer.Vsix</RootNamespace>
     <AssemblyName>CCAnalyzer.Vsix</AssemblyName>
   </PropertyGroup>
@@ -33,7 +33,6 @@
   <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="Exists('$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets')" />
 
   <ItemGroup>
-    <ProjectReference Include="..\CCAnalyzer.CodeFixes\CCAnalyzer.CodeFixes.csproj" />
     <ProjectReference Include="..\CCAnalyzer\CCAnalyzer.csproj" />
   </ItemGroup>
 
