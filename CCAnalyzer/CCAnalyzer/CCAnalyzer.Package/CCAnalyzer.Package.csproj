@@ -7,9 +7,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <PackageId>HenningNT.CCAnalyzer</PackageId>
-    <PackageVersion>0.0.1</PackageVersion>
-    <Authors>henning.torsteinsen</Authors>
-    <PackageLicenseUrl>https://github.com/HenningNT/CognitiveComplexityAnalyzer/blob/Release/LICENSE</PackageLicenseUrl>
+    <PackageVersion>0.0.2</PackageVersion>
+    <Authors>Henning Torsteinsen</Authors>
+    <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/HenningNT/CognitiveComplexityAnalyzer/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/HenningNT/CognitiveComplexityAnalyzer/</RepositoryUrl>
     <Description>Cognitive Complexity Analyzer calculates how hard it is to figure out how the code works.</Description>
@@ -17,8 +17,12 @@
     <PackageTags>Cognitive Complexity, analyzer, analyzers</PackageTags>
     <NoPackageAnalysis>true</NoPackageAnalysis>
     <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);_AddAnalyzersToOutput</TargetsForTfmSpecificContentInPackage>
-    <Version>0.0.1</Version>
+    <Version>0.0.2</Version>
     <Product>CognitiveComplexityAnalyzer</Product>
+    <Copyright>Henning Torsteinsen</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>ClipartKey_542071.png</PackageIcon>
+    <NeutralLanguage>en-GB</NeutralLanguage>
   </PropertyGroup>
   <Target Name="_AddAnalyzersToOutput">
     <ItemGroup>
@@ -30,5 +34,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Update="tools\*.ps1" CopyToOutputDirectory="Always" Pack="true" PackagePath="" />
+    <None Include="..\..\Docs\ClipartKey_542071.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 </Project>
