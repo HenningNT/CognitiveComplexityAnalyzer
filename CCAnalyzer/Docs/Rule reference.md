@@ -6,7 +6,7 @@ There are too many nested section, or too many logical conditions.
 
 ## Rule description
 
-
+The code is convoluted, so it's hard to understand everything the method does. Long methods, complicated logic, and several levels of nesting can make the code hard to understand.
 
 ## How to fix violations
 
@@ -60,10 +60,17 @@ public Transition Exit(Transition transition)
 ```
 ## Example of how to fix
 
-- Refactor
-- Reduce nesting
+
 
 ### Description
+
+There are two examples:
+
+- Refactor
+A part of the method has been extracted into its own method.
+
+- Reduce nesting
+The logic conditions has been modified so that the method uses early return. 
 
 ### Code
 
